@@ -2,16 +2,17 @@ param(
  [ValidateSet('original','latest')][string]$Version = 'original',
  [string]$GodotPath,
  [string]$AddonPath,
+ [string]$DependencyPath = ([IO.Path]::GetFullPath((Join-Path $PSScriptRoot '.deps'))),
  [string]$RunPath
 )
 $ErrorActionPreference = 'Stop'
-$base = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot 'work/dependencies'))
+$base = $DependencyPath
 if (!$GodotPath) { $GodotPath = Join-Path $base 'engine472/Godot_v4.7.2-stable_win64_console.exe' }
 if (!$AddonPath) {
  if ($Version -eq 'original') { $AddonPath = Join-Path $base 'rapier/godot-rapier-2d-single-enhanced-determinism/addons/godot-rapier2d' }
  else { $AddonPath = Join-Path $base 'rapier-latest/godot-rapier-2d-single/addons/godot-rapier2d' }
 }
-if (!$RunPath) { $RunPath = Join-Path $base "review-$Version" }
+if (!$RunPath) { $RunPath = Join-Path $PSScriptRoot ".runs/review-$Version" }
 if (!(Test-Path -LiteralPath $GodotPath)) { throw 'Godot executable missing; run prepare.ps1 or supply -GodotPath.' }
 if (!(Test-Path -LiteralPath $AddonPath)) { throw 'Rapier addon missing; run prepare.ps1 or supply -AddonPath.' }
 New-Item -ItemType Directory -Force $RunPath,(Join-Path $RunPath 'addons') | Out-Null
@@ -45,3 +46,4 @@ $result | Group-Object mode | ForEach-Object {
   HealthMismatches=($_.Group.health_mismatches | Measure-Object -Sum).Sum; ClockMismatches=($_.Group.clock_mismatches | Measure-Object -Sum).Sum }
 } | Format-Table
 Write-Output "PASS: baseline reproduced; normal-frame control passed;72 matrix cases verified. Logs: $RunPath"
+

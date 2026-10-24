@@ -1,4 +1,4 @@
-param([string]$DependencyPath = ([IO.Path]::GetFullPath((Join-Path $PSScriptRoot 'work/dependencies'))))
+param([string]$DependencyPath = ([IO.Path]::GetFullPath((Join-Path $PSScriptRoot '.deps'))))
 $ErrorActionPreference = 'Stop'
 New-Item -ItemType Directory -Force $DependencyPath | Out-Null
 foreach ($dependency in (Get-Content (Join-Path $PSScriptRoot 'dependencies.json') | ConvertFrom-Json)) {

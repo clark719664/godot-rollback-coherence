@@ -1,0 +1,6 @@
+Initialize godot-rust (API v4.7.stable.official, runtime v4.7.2.stable.official, safeguards balanced)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[92mPHYSICS ENGINE 2D: Rapier2D v0.8.35[39m[0m
+Delaying host start by 110ms
+FULL_FIXTURE_RESULT={"error":"","mismatches":0,"players":{"/root/BombGame/ClientPlayer":{"health":-40,"position":[599.0,320.0],"speed":0.0,"teleporting":false},"/root/BombGame/ServerPlayer":{"health":-40,"position":[603.0,321.0],"speed":0.0,"teleporting":false}},"role":"server","rollbacks":29}

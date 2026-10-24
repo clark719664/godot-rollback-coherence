@@ -1,0 +1,162 @@
+{
+  "case": "reference",
+  "fixed": true,
+  "delay_ms": 0,
+  "exits": [
+    0,
+    0
+  ],
+  "errors": [],
+  "divergent_completed_ticks": [],
+  "final_players": [
+    {
+      "/root/BombGame/ClientPlayer": {
+        "health": -40,
+        "position": [
+          599.0,
+          320.0
+        ],
+        "speed": 0.0,
+        "teleporting": false
+      },
+      "/root/BombGame/ServerPlayer": {
+        "health": -30,
+        "position": [
+          603.0,
+          321.0
+        ],
+        "speed": 0.0,
+        "teleporting": false
+      }
+    },
+    {
+      "/root/BombGame/ClientPlayer": {
+        "health": -40,
+        "position": [
+          599.0,
+          320.0
+        ],
+        "speed": 0.0,
+        "teleporting": false
+      },
+      "/root/BombGame/ServerPlayer": {
+        "health": -30,
+        "position": [
+          603.0,
+          321.0
+        ],
+        "speed": 0.0,
+        "teleporting": false
+      }
+    }
+  ],
+  "rollbacks": [
+    0,
+    0
+  ],
+  "mismatches": [
+    0,
+    0
+  ],
+  "successful_restores": [
+    0,
+    0
+  ],
+  "restore_checks": [
+    0,
+    0
+  ],
+  "observed_rewinds": [
+    0,
+    0
+  ],
+  "animated_hitboxes": [
+    true,
+    true
+  ],
+  "query_checks": [
+    16,
+    16
+  ],
+  "query_mismatches": [
+    0,
+    0
+  ],
+  "observed_spawns": [
+    [
+      "Bomb1",
+      "Bomb2",
+      "Bomb3",
+      "Bomb4",
+      "Bomb5",
+      "Bomb6",
+      "Explosion1",
+      "Explosion2",
+      "Explosion3",
+      "Explosion4",
+      "Bomb7",
+      "Bomb8",
+      "Explosion5",
+      "Explosion6",
+      "Bomb10",
+      "Bomb9",
+      "Explosion7",
+      "Explosion8",
+      "Bomb11",
+      "Bomb12",
+      "Explosion10",
+      "Explosion9",
+      "Bomb13",
+      "Bomb14",
+      "Explosion11",
+      "Explosion12",
+      "Bomb15",
+      "Bomb16",
+      "Explosion13",
+      "Explosion14",
+      "Explosion15",
+      "Explosion16"
+    ],
+    [
+      "Bomb1",
+      "Bomb2",
+      "Bomb3",
+      "Bomb4",
+      "Bomb5",
+      "Bomb6",
+      "Explosion1",
+      "Explosion2",
+      "Explosion3",
+      "Explosion4",
+      "Bomb7",
+      "Bomb8",
+      "Explosion5",
+      "Explosion6",
+      "Bomb10",
+      "Bomb9",
+      "Explosion7",
+      "Explosion8",
+      "Bomb11",
+      "Bomb12",
+      "Explosion10",
+      "Explosion9",
+      "Bomb13",
+      "Bomb14",
+      "Explosion11",
+      "Explosion12",
+      "Bomb15",
+      "Bomb16",
+      "Explosion13",
+      "Explosion14",
+      "Explosion15",
+      "Explosion16"
+    ]
+  ],
+  "datagrams_delivered": 607,
+  "injected_one_way_ms": [
+    0,
+    0
+  ],
+  "measured_one_way_ms_min": 0.0,
+  "measured_one_way_ms_max": 0.0
+}

@@ -1,0 +1,11 @@
+
+Mode        Queries MissedHits FalseHits HealthMismatches ClockMismatches
+----        ------- ---------- --------- ---------------- ---------------
+baseline    2580.00    1290.00      0.00           210.00            0.00
+coherent    2580.00       0.00      0.00             0.00            0.00
+direct      2580.00       0.00      0.00             0.00            0.00
+flush_only  2580.00    1290.00   1170.00           120.00            0.00
+force_only  2580.00    1290.00   1170.00           120.00            0.00
+mode_toggle 2580.00    1290.00   1170.00           120.00            0.00
+
+PASS: baseline reproduced; normal-frame control passed;72 matrix cases verified. Logs: <workspace>\work\godot\fresh-clone\.runs\review-original

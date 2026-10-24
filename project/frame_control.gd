@@ -46,3 +46,4 @@ func sample(label: String) -> Dictionary:
 	var results := world.direct_space_state.intersect_shape(query)
 	var server: Transform2D = PhysicsServer2D.body_get_state(body.get_rid(), PhysicsServer2D.BODY_STATE_TRANSFORM)
 	return {"phase": label, "node_x": body.global_position.x, "server_x": server.origin.x, "hit": not results.is_empty()}
+

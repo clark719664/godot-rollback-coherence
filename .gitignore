@@ -1,15 +1,16 @@
-# Local dependencies, compiled files, and temporary output
+.deps/
+.runs/
+__pycache__/
+*.pyc
+
+# Local build products, dependencies, and private environment files.
 /work/
 /build/
 /target/
-/.godot/
 **/.godot/
-__pycache__/
-*.py[cod]
 *.exe
 *.dll
 *.pdb
 *.tmp
 .env
 .env.*
-!.env.example

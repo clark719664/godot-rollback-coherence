@@ -1,60 +1,72 @@
-# Godot coherent rollback: executable milestone
+# Coherent Rapier rollback in Godot
 
-A reduced, real-engine reproduction confirms a SceneTree/physics synchronization boundary from Rapier issue #534. Restoring a Node2D player's parent transform leaves its child StaticBody2D at the old PhysicsServer transform. Updating the child alone updates the server transform but does not refresh the query broadphase until a physics step.
+A working integration and regression suite for the original [Rapier issue #534 bomb game](https://github.com/appsinacup/godot-rapier-physics/issues/534). It runs two real headless Godot peers over ENet, injects latency into actual loopback UDP datagrams, and checks every confirmed gameplay tick against a zero-delay reference. A smaller physics matrix isolates the original synchronization bug.
 
-## Run
+## Run from a fresh clone
 
-From this folder in PowerShell:
+Requires Windows x64, PowerShell, and Python 3. No Godot installation, native build, administrator privileges, firewall changes, or Python packages are needed.
 
 ```powershell
-./prepare.ps1                 # only needed if downloaded dependencies are absent
+./prepare.ps1
+./run-full.ps1 -Version original
+./run-full.ps1 -Version latest
 ./run.ps1 -Version original
 ./run.ps1 -Version latest
 ```
 
-The preparation script downloads pinned Windows x64 dependencies into this checkout's ignored work/dependencies folder. Supply -DependencyPath to prepare.ps1 and -GodotPath/-AddonPath/-RunPath to run.ps1 to use other locations. prepare.ps1 checks the pinned SHA256 archive hashes in dependencies.json. No native binaries are bundled in this deliverable. First extension import can request an engine restart; the runner retries import once and requires a successful import plus actual runtime measurements.
+The first command downloads SHA256-pinned archives into `.deps/`. The fixture is downloaded from its author's original attachment; it is not redistributed. Runners create isolated projects and logs in `.runs/`. Use `-DependencyPath`, `-PythonPath`, `-RunPath`, and (for the network suite) `-Port` to override defaults. The reduced runner also accepts `-GodotPath` and `-AddonPath`. A fresh folder with no surrounding workspace was tested using these defaults.
 
-## Implemented fix
+For the original game with its manual menu and keyboard controls:
 
-project/coherent_step.gd is a small GDScript synchronization boundary for explicitly registered, Node2D-driven static hitboxes:
+```powershell
+./make-game.ps1
+./.deps/engine472/Godot_v4.7.2-stable_win64_console.exe --path ./.runs/game
+```
 
-1. Apply all gameplay and restored transforms.
-2. Call force_update_transform() on each registered hitbox.
-3. Perform exactly one regular fixed-delta Rapier step and flush.
-4. Run bomb queries and commit health changes after that step.
+The manual preparation preserves the original controls and connection menu. The automated runs add deterministic input and an actual NetworkAnimationPlayer that moves each nested hitbox. Those additions are test scaffolding. Both paths apply the same production driver and hash ordering fix. Archived scene UID metadata can emit diagnostics on initial editor import; the automated runner separately rejects runtime script/engine errors and requires actual gameplay results.
 
-The harness calls the same helper. The alternative direct body_set_state before the normal step also passes. No extra zero-time steps are used. Do not apply this helper indiscriminately to dynamic RigidBodies, whose simulation owns their transforms. In the original project's scheduler, bomb timer callbacks run in _network_process while physics steps in _network_postprocess: move authoritative bomb hit queries to an explicit phase after the driver step. This release provides the tested boundary helper, not an unverified full-game integration patch.
+## What changed
 
-## Measured results
+The original bomb timer queried collisions during `_network_process`, before the driver's physics step in `_network_postprocess`. A rollback restores physics and scene state on different schedules, so a query could use an older hitbox location. The integration queues a copy of each blast's position, radius and damage, flushes each explicitly registered player hitbox after all movement and animation, performs exactly one regular fixed-delta Rapier step, then executes damage queries. There are no extra zero-time steps.
 
-Official Godot 4.7.2, Windows x64, headless. Both Rapier packages: 72 cases each, 144 total, 20 repeated rollback cycles per case, with two checked snapshot restores per cycle. Each case separately tests synthetic input arrival delay 0/100/200ms (0/6/12 nominal ticks) and rollback history depth 1/6/12/24. Even the zero-delay case deliberately injects a rollback; it is not a no-rollback network control. At least one prediction tick runs in each case so a real snapshot rewind can be verified.
+`full_fixture/PhysicsDriver.gd` retains real Rapier snapshots. Each load must return success, and restored PhysicsServer transforms and linear/angular velocities must equal the saved state. Missing or incorrect restores stop synchronization. Counters distinguish attempted rollbacks, successful native restores, verified bodies, and observed physical rewinds.
 
-Per plugin, each mode executes 2,580 real shape queries:
+A second fixture issue appeared in real peer tests: the native Delta Rollback hasher observes Dictionary insertion order. Rollback and spawning can reorder scene groups. Initial confirmed frames had identical Variant types and byte values but different root-key order and different native hashes, until the first spawn alphabetized the scene. `CanonicalState.gd` orders dictionary keys for hashing while preserving the original values and types. The test still requires equality of the native `$` hashes and zero remote hash mismatches.
 
-- Baseline: 1,290 missed hits; 210 final-health mismatches across 240 cycles.
-- Transform-only after step, transform+flush after step, and static mode-toggle adaptation: each 1,290 missed hits, 1,170 false hits, 120 final-health mismatches.
-- Coherent boundary: zero missed/false hits, transform mismatches, health mismatches, or clock mismatches.
-- Direct server transform before regular step: also zero mismatches.
+`run_full.py` patches the downloaded fixture using exact anchors and refuses an unexpected source layout. It preserves the original ENet adapter, native Delta Rollback extension, spawn manager, timers, RNG, scene, player health, and Rapier physics. Only the test scaffold scripts and the integration changes are redistributed here.
 
-All 144 cases return SUITE_FAILURES=0, meaning fixed modes pass and negative controls still demonstrate the bug. The runner separately requires baseline exit1 and normal-frame control exit0. A moving, undamped rigid body verifies that replay advances exactly depth fixed ticks. Each restore checks actual PhysicsServer sentinel transform, velocity, and hitbox transform against the original snapshot before resetting application state. Prediction must move the sentinel. A deliberately disabled snapshot importer must fail with RESTORE_ERROR; both fault-injection logs record exit1. Each successful suite records 2,880 checked restores. Actual JSON measurements and raw engine logs are in results/; timings are local microbenchmarks, not representative game performance claims.
+## Full gameplay regression
 
-## Scope and outstanding work
+Each plugin runs four cases: original scheduling with delay, patched zero-delay reference, patched delayed peers, and an intentional regression that executes the patched blast queue before transform synchronization/stepping.
 
-This is a deterministic delayed-input scheduler and same-frame rollback burst, not two ENet peers, operating-system latency injection, or a complete replay of issue534's bomb game. The original v3 project was downloaded and relevant scripts inspected. Real Rapier cache_state/load_cached_state, real CollisionShape2D/StaticBody2D, real rigid-body motion, real shape queries and numerical health mutations are exercised. No mock physics is used. We establish an application ordering fix; this does not establish an engine defect or cross-platform determinism.
+- Two separate Godot processes exchange actual ENet packets through a loopback UDP relay. The relay delays datagrams in both directions by 100ms plus deterministic jitter from -20 to +20ms. Recorded receive-to-send delay was approximately 93–125ms on this Windows machine. This is network transport delay; the reduced matrix's synthetic tick delay is a separate test.
+- All 240 completed input ticks are compared with full float precision, including player health/positions, native physics transforms/velocities, timer states, RNG, animation, spawn records and native hashes. Predictions and unequal local clocks are not compared.
+- Patched delayed peers match each other and the zero-delay reference at every checked tick. Both perform genuine rollback imports and physical rewinds. All authoritative shape queries also match an independent circle-versus-axis-aligned-rectangle oracle at the post-movement boundary.
+- Each match creates and logically despawns 16 bombs and 16 explosions. The test checks their counters and that any retained spawn records are waiting for removal after despawn; delayed physical node disposal is the original spawn manager's rollback retention policy.
+- Original scheduling and the explicit query-before-step regression must fail the geometric oracle. Comparing peers alone would be insufficient: two peers can make the same wrong query. The original run also produced wrong final health relative to the reference; the latest-plugin original run diverged between peers.
 
-The netfox documentation's body-mode workaround targets kinematic bodies with GodotPhysics3D/Jolt. We tested its 2D static-hitbox adaptation here; it does not fix this Rapier case when called after the normal step. That is not a verdict on the documented 3D workaround. Godot PR76462 remains open at head5b59c337ae899b12fafa057d5ea805fd6c759918 and is not in the official engine; it requires a separate custom native build and has not been tested. Rapier's existing manual stepping APIs suffice for this milestone. Animated shapes, CharacterBody floor caches, Area signals, spawning/despawning, and two-peer scheduling remain further integration work.
+Measured logs, summary JSON, and compressed full-precision peer traces are in `results/full-original/` and `results/full-latest/`. Exact rollback/query counts depend on packet timing and are reported per run, rather than hardcoded as a required count. Final patched health is ServerPlayer -30 and ClientPlayer -40 on both peers for the scripted scenario; the original game allows health below zero.
 
-## Pins, provenance and licensing
+## Reduced physics controls
 
-- Engine: official Godot4.7.2-stable, runtime ed1daf0bf, https://github.com/godotengine/godot/releases/tag/4.7.2-stable . Godot uses the MIT license; see https://godotengine.org/license/ .
-- Original requested plugin asset: v0.8.36, https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.8.36/godot-rapier-2d-single-enhanced-determinism.zip . Its embedded plugin version/runtime is0.8.35; compatibility_minimum=4.7. Thus the issue's requested Godot4.6.2 is incompatible without modifying the package. We preserved the package and tested with4.7.2.
-- Original source clone: tagv0.8.36, commitcaf638431121a524685bd1a3d0e380937aa04b99. src/nodes/state_manager.rs documents why an extra zero-step was disabled: it increments internal bookkeeping ticks.
-- Current plugin asset: v0.36.0, https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.36.0/godot-rapier-2d-single.zip . This release has no separately named enhanced-determinism asset; tests establish local repeatability only.
-- Godot Rapier's MIT license and third-party notices remain in downloaded addon folders. https://github.com/appsinacup/godot-rapier-physics/blob/v0.8.36/LICENSE . Archive hashes are in dependencies.json and results/archive-hashes.json.
-- Issue: https://github.com/appsinacup/godot-rapier-physics/issues/534 ; fixture: https://github.com/user-attachments/files/29163702/rollback-rapier-test-v3.zip . The fixture is not redistributed here; its licensing is not inferred.
-- netfox caveats: https://foxssake.github.io/netfox/latest/netfox/tutorials/rollback-caveats/ . Manual stepping PR: https://github.com/godotengine/godot/pull/76462 .
+`project/coherent_step.gd` is the minimal synchronization boundary. The reduced suite runs 72 cases per plugin, 144 total, across synthetic input arrival delay 0/100/200ms and rollback depth 1/6/12/24. Per plugin, each mode executes 2,580 shape queries. Baseline misses 1,290 hits; the coherent boundary and direct server-transform-before-step mode have zero missed/false hits, health mismatches, transform mismatches or clock mismatches.
 
+Each successful suite verifies 2,880 snapshot restores. A deliberately disabled snapshot importer must fail with RESTORE_ERROR. A moving undamped rigid-body sentinel checks replay advances exactly the intended number of fixed ticks. The runner also requires the simple baseline to fail and a normal-frame control to pass. These controls remain independent of the full-game integration.
 
-The authored reduced harness and runner are MIT licensed (LICENSE). Engine/addon binaries and the original issue fixture are not bundled; their upstream licenses continue to apply to downloads. The results/archive-hashes.json paths are reduced to archive filenames for publication; hashes are unchanged.
+## Supported scope
 
-A manual GitHub Actions workflow reproduces the pinned research checks. It has not been run on GitHub at initial publication; the recorded results above came from local runs.
+The application fix is validated for this fixture's registered StaticBody2D hitboxes driven by Node2D parents, including animated child transforms and the original bomb/explosion lifecycle. It establishes local Windows repeatability for the pinned binaries. It does not establish cross-platform determinism, CharacterBody floor-cache restoration, Area signal replay, dynamically spawned physics bodies, animated shape-resource changes, or general RigidBody transform ownership. The integration deliberately does not rewrite those unrelated contracts.
+
+The official engine's existing Rapier stepping APIs suffice. [Godot PR #76462](https://github.com/godotengine/godot/pull/76462) is not built or claimed as fixed here. This is an application ordering/hash integration fix, not proof of an engine defect. The [netfox body-mode caveat](https://foxssake.github.io/netfox/latest/netfox/tutorials/rollback-caveats/) concerns GodotPhysics3D/Jolt kinematic bodies; the reduced matrix's 2D static adaptation is not a verdict on that workaround.
+
+## Pins and provenance
+
+- [Godot 4.7.2 stable](https://github.com/godotengine/godot/releases/tag/4.7.2-stable), runtime `ed1daf0bf`, Windows x64. [MIT license](https://godotengine.org/license/).
+- [Original Rapier v0.8.36 enhanced-determinism asset](https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.8.36/godot-rapier-2d-single-enhanced-determinism.zip). The embedded runtime reports v0.8.35 and requires Godot 4.7. The package was preserved; the issue's requested 4.6.2 engine cannot load it unchanged. Original source tag commit: `caf638431121a524685bd1a3d0e380937aa04b99`.
+- [Rapier v0.36.0 single-precision asset](https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.36.0/godot-rapier-2d-single.zip). This release has no separately named enhanced-determinism asset. [Rapier MIT license](https://github.com/appsinacup/godot-rapier-physics/blob/v0.8.36/LICENSE); addon archives retain their notices.
+- [Original v3 fixture attachment](https://github.com/user-attachments/files/29163702/rollback-rapier-test-v3.zip), SHA256 `9350DCDB8B1C100BC6EB19180621036EE19C109C5DF5F83DCB21E913DDCCA96E`. It includes its native Delta Rollback extension; fixture licensing is not inferred. The attachment and its binaries are fetched only when the user runs preparation.
+- All dependency URLs and archive hashes are recorded in `dependencies.json`. No downloaded engine/plugin/fixture binaries are checked into this deliverable.
+
+The authored harness, integration scripts and documentation are MIT licensed (LICENSE). Downloaded fixture/addon components retain their own upstream terms; the original fixture and binaries are not redistributed here. Retained text logs replace machine-local checkout/build-cache prefixes with placeholders; numerical measurements remain unchanged.
+
+The manual GitHub Actions workflow runs both pinned packages through the reduced controls and full two-peer integration suite.

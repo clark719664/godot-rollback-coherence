@@ -1,23 +1,13 @@
-# Godot coherent rollback milestone
+# Verified implementation ledger
 
-## Spec
-Reproduce child StaticBody2D hitbox transforms lagging behind a restored Node2D parent during a same-frame rollback burst. Use official Godot and real Rapier, pinned versions. Record SceneTree transform, PhysicsServer body transform, and actual shape-query results. Compare baseline, force_update_transform, and explicit body_set_state synchronization for 0/100/200 ms simulated input delay and rollback depths. A successful mitigation must fix actual query/hit health outcomes, not only log parsing.
+The reduced synchronization reproduction and its 144-case matrix were completed first. The continuation then used the original v3 scene, native Delta Rollback extension, ENet transport, spawn manager and timers.
 
-## Plan
-1. Fetch issue #534 v3 fixture and pinned prebuilt engine/plugin, inspect relevant scripts.
-2. Build a small headless reproduction from the real fixture's parent/child collision setup; verify failure before writing mitigation.
-3. Test transform-flush and explicit server synchronization independently; add focused implementation only after evidence.
-4. Run matrix, package source harness, measurements, exact versions and limitations.
+1. A real two-peer baseline reproduced divergent health and stale collision decisions under actual delayed UDP transport.
+2. The driver's postprocess phase now synchronizes registered moving/animated child hitboxes, runs one ordinary physics step, then processes copied blast requests.
+3. A separate native hash-order bug was isolated with confirmed-frame Variant byte/type manifests. Stable dictionary ordering before hashing fixes it without hiding native hashes or normalizing values.
+4. Full gameplay tests compare all 240 confirmed states against a zero-delay reference. A geometric oracle and intentional query-before-step fault establish that peer agreement alone cannot pass a broken scheduler.
+5. Restore API results and saved server transforms/velocities are checked; counters require successful native imports and observed physical rewinds.
+6. Both pinned plugins pass the full suite. The original/fault negative controls fail the collision oracle. The reduced no-op importer and rigid-body clock controls remain intact.
+7. Fresh-clone defaults use .deps and .runs beneath the repository root. Dependency preparation, the reduced runner and full suite were exercised in an isolated copy. Manual game preparation preserves the original input/menu and passed a headless startup smoke check.
 
-## Ledger
-- Local llm wrapper/Ollama unavailable, confirmed by parent; mechanical work proceeds directly.
-- Upstream latest observed: Rapier v0.36.0. Original fixture requests v0.8.36 and Godot 4.6.2. Test original pins first.
-- Upstream discussion explicitly distinguishes Godot node cached transforms from Rapier server state. Engine defect remains unproven.
-
-## Completed ledger
-- Downloaded original fixture, original plugin asset, current plugin asset, official Godot4.6.2 and4.7.2. Original plugin requires4.7; tests use4.7.2, no minimum-version edits.
-- Reproduced real stale server transform and stale broadphase query before mitigation. Baseline exit1. Normal-frame control exit0.
-- Added explicit transform synchronization before one normal physics step; no zero-step or engine modifications.
-- Added matrix modes baseline/force_only/flush_only/mode_toggle/coherent/direct. Added sixth mode after first summary, so final count72/plugin144total.
-- Both packaged runner suites pass, including2,880verified restore checks/plugin, no-op restore fault injection failing as expected, and independent rigid-body clock guard.
-- Full issue networking, netfox3D workaround and custom manual-stepping engine fork remain untested; no engine defect asserted.
+Boundaries: only the fixture's registered Node2D-driven StaticBody2D contract is supported. CharacterBody caches, Area signals, dynamic physics-body lifecycle and cross-platform determinism remain unverified. No custom engine builds or system network changes were used. The local llm wrapper/Ollama were unavailable as established by the parent session; mechanical work proceeded directly.

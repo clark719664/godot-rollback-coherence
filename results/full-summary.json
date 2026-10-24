@@ -1,0 +1,1544 @@
+{
+  "original": {
+    "baseline": {
+      "case": "baseline",
+      "fixed": false,
+      "delay_ms": 100,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -30,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -40,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -30,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -40,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        27,
+        29
+      ],
+      "mismatches": [
+        0,
+        0
+      ],
+      "successful_restores": [
+        0,
+        0
+      ],
+      "restore_checks": [
+        0,
+        0
+      ],
+      "observed_rewinds": [
+        0,
+        0
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        34,
+        32
+      ],
+      "query_mismatches": [
+        4,
+        3
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Explosion10",
+          "Explosion9",
+          "Bomb12",
+          "Bomb13",
+          "Explosion11",
+          "Explosion12",
+          "Bomb14",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ]
+      ],
+      "datagrams_delivered": 1098,
+      "injected_one_way_ms": [
+        80,
+        120
+      ],
+      "measured_one_way_ms_min": 92.99999999348074,
+      "measured_one_way_ms_max": 140.00000001396984
+    },
+    "reference": {
+      "case": "reference",
+      "fixed": true,
+      "delay_ms": 0,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        0,
+        21
+      ],
+      "mismatches": [
+        0,
+        0
+      ],
+      "successful_restores": [
+        0,
+        21
+      ],
+      "restore_checks": [
+        0,
+        42
+      ],
+      "observed_rewinds": [
+        0,
+        42
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        16,
+        24
+      ],
+      "query_mismatches": [
+        0,
+        0
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb10",
+          "Bomb9",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ]
+      ],
+      "datagrams_delivered": 602,
+      "injected_one_way_ms": [
+        0,
+        0
+      ],
+      "measured_one_way_ms_min": 0.0,
+      "measured_one_way_ms_max": 0.0
+    },
+    "fixed": {
+      "case": "fixed",
+      "fixed": true,
+      "delay_ms": 100,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        5,
+        29
+      ],
+      "mismatches": [
+        0,
+        0
+      ],
+      "successful_restores": [
+        5,
+        29
+      ],
+      "restore_checks": [
+        10,
+        58
+      ],
+      "observed_rewinds": [
+        10,
+        58
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        35,
+        117
+      ],
+      "query_mismatches": [
+        0,
+        0
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb6",
+          "Bomb7",
+          "Explosion5",
+          "Bomb8",
+          "Explosion6",
+          "Bomb10",
+          "Bomb9",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Explosion1",
+          "Explosion2",
+          "Bomb4",
+          "Explosion3",
+          "Bomb5",
+          "Explosion4",
+          "Bomb6",
+          "Explosion5",
+          "Bomb7",
+          "Explosion6",
+          "Bomb8",
+          "Explosion7",
+          "Bomb9",
+          "Explosion8",
+          "Bomb10",
+          "Explosion9",
+          "Bomb11",
+          "Bomb12",
+          "Explosion11",
+          "Bomb13",
+          "Bomb14",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15"
+        ]
+      ],
+      "datagrams_delivered": 1209,
+      "injected_one_way_ms": [
+        80,
+        120
+      ],
+      "measured_one_way_ms_min": 92.99999999348074,
+      "measured_one_way_ms_max": 125.0
+    },
+    "fault": {
+      "case": "fault",
+      "fixed": true,
+      "delay_ms": 100,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -40,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -40,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        29,
+        29
+      ],
+      "mismatches": [
+        0,
+        0
+      ],
+      "successful_restores": [
+        29,
+        29
+      ],
+      "restore_checks": [
+        58,
+        58
+      ],
+      "observed_rewinds": [
+        57,
+        58
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        36,
+        32
+      ],
+      "query_mismatches": [
+        2,
+        1
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Explosion10",
+          "Explosion9",
+          "Bomb12",
+          "Bomb13",
+          "Explosion11",
+          "Explosion12",
+          "Bomb14",
+          "Bomb15",
+          "Explosion13",
+          "Explosion14",
+          "Bomb16",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Explosion10",
+          "Explosion9",
+          "Bomb12",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ]
+      ],
+      "datagrams_delivered": 1101,
+      "injected_one_way_ms": [
+        80,
+        120
+      ],
+      "measured_one_way_ms_min": 92.99999999348074,
+      "measured_one_way_ms_max": 125.0
+    },
+    "verified": {
+      "confirmed_ticks": 240,
+      "both_peers_equal_reference": true,
+      "fixed_native_hash_mismatches": 0,
+      "fixed_oracle_mismatches": 0,
+      "fixed_successful_restores": [
+        5,
+        29
+      ],
+      "fixed_restore_checks": [
+        10,
+        58
+      ],
+      "fixed_observed_rewinds": [
+        10,
+        58
+      ]
+    }
+  },
+  "latest": {
+    "baseline": {
+      "case": "baseline",
+      "fixed": false,
+      "delay_ms": 100,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [
+        "1",
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "109",
+        "110",
+        "111",
+        "112",
+        "113",
+        "114",
+        "115",
+        "116",
+        "117",
+        "118",
+        "119",
+        "120",
+        "121",
+        "122",
+        "123",
+        "124",
+        "125",
+        "126",
+        "127",
+        "128",
+        "129",
+        "130",
+        "131",
+        "132",
+        "133",
+        "134",
+        "135",
+        "136",
+        "137",
+        "138",
+        "139",
+        "140",
+        "141",
+        "142",
+        "143",
+        "144",
+        "145",
+        "146",
+        "147",
+        "148",
+        "149",
+        "150",
+        "151",
+        "152",
+        "153",
+        "154",
+        "155",
+        "156",
+        "157",
+        "158",
+        "159",
+        "160",
+        "161",
+        "162",
+        "163",
+        "164",
+        "165",
+        "166",
+        "167",
+        "168",
+        "169",
+        "170",
+        "171",
+        "172",
+        "173",
+        "174",
+        "175",
+        "176",
+        "177",
+        "178",
+        "179",
+        "180",
+        "181",
+        "182",
+        "183",
+        "184",
+        "185",
+        "186",
+        "187",
+        "188",
+        "189",
+        "190",
+        "191",
+        "192",
+        "193",
+        "194",
+        "195",
+        "196",
+        "197",
+        "198",
+        "199",
+        "2",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "209",
+        "210",
+        "211",
+        "212",
+        "213",
+        "214",
+        "215",
+        "216",
+        "217",
+        "218",
+        "219",
+        "220",
+        "221",
+        "222",
+        "223",
+        "224",
+        "225",
+        "226",
+        "227",
+        "228",
+        "229",
+        "230",
+        "231",
+        "232",
+        "233",
+        "234",
+        "235",
+        "236",
+        "237",
+        "238",
+        "239",
+        "240",
+        "3",
+        "38",
+        "39",
+        "4",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "5",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "6",
+        "60",
+        "61",
+        "62",
+        "63",
+        "64",
+        "65",
+        "66",
+        "67",
+        "68",
+        "69",
+        "7",
+        "70",
+        "71",
+        "72",
+        "73",
+        "74",
+        "75",
+        "76",
+        "77",
+        "78",
+        "79",
+        "80",
+        "81",
+        "82",
+        "83",
+        "84",
+        "85",
+        "86",
+        "87",
+        "88",
+        "89",
+        "90",
+        "91",
+        "92",
+        "93",
+        "94",
+        "95",
+        "96",
+        "97",
+        "98",
+        "99"
+      ],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -50,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -30,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -40,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        29,
+        29
+      ],
+      "mismatches": [
+        217,
+        215
+      ],
+      "successful_restores": [
+        0,
+        0
+      ],
+      "restore_checks": [
+        0,
+        0
+      ],
+      "observed_rewinds": [
+        0,
+        0
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        34,
+        34
+      ],
+      "query_mismatches": [
+        5,
+        3
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Explosion10",
+          "Explosion9",
+          "Bomb12",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Explosion13",
+          "Explosion14",
+          "Bomb16",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Explosion11",
+          "Explosion12",
+          "Bomb14",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ]
+      ],
+      "datagrams_delivered": 1101,
+      "injected_one_way_ms": [
+        80,
+        120
+      ],
+      "measured_one_way_ms_min": 92.99999999348074,
+      "measured_one_way_ms_max": 125.0
+    },
+    "reference": {
+      "case": "reference",
+      "fixed": true,
+      "delay_ms": 0,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        0,
+        0
+      ],
+      "mismatches": [
+        0,
+        0
+      ],
+      "successful_restores": [
+        0,
+        0
+      ],
+      "restore_checks": [
+        0,
+        0
+      ],
+      "observed_rewinds": [
+        0,
+        0
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        16,
+        16
+      ],
+      "query_mismatches": [
+        0,
+        0
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb10",
+          "Bomb9",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb10",
+          "Bomb9",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ]
+      ],
+      "datagrams_delivered": 607,
+      "injected_one_way_ms": [
+        0,
+        0
+      ],
+      "measured_one_way_ms_min": 0.0,
+      "measured_one_way_ms_max": 0.0
+    },
+    "fixed": {
+      "case": "fixed",
+      "fixed": true,
+      "delay_ms": 100,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -30,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        30,
+        31
+      ],
+      "mismatches": [
+        0,
+        0
+      ],
+      "successful_restores": [
+        30,
+        31
+      ],
+      "restore_checks": [
+        60,
+        62
+      ],
+      "observed_rewinds": [
+        59,
+        61
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        32,
+        34
+      ],
+      "query_mismatches": [
+        0,
+        0
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Explosion11",
+          "Explosion12",
+          "Bomb14",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb9",
+          "Bomb10",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Explosion11",
+          "Explosion12",
+          "Bomb14",
+          "Bomb15",
+          "Explosion13",
+          "Explosion14",
+          "Bomb16",
+          "Explosion15",
+          "Explosion16"
+        ]
+      ],
+      "datagrams_delivered": 1100,
+      "injected_one_way_ms": [
+        80,
+        120
+      ],
+      "measured_one_way_ms_min": 92.99999999348074,
+      "measured_one_way_ms_max": 125.0
+    },
+    "fault": {
+      "case": "fault",
+      "fixed": true,
+      "delay_ms": 100,
+      "exits": [
+        0,
+        0
+      ],
+      "errors": [],
+      "divergent_completed_ticks": [],
+      "final_players": [
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -40,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        },
+        {
+          "/root/BombGame/ClientPlayer": {
+            "health": -40,
+            "position": [
+              599.0,
+              320.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          },
+          "/root/BombGame/ServerPlayer": {
+            "health": -40,
+            "position": [
+              603.0,
+              321.0
+            ],
+            "speed": 0.0,
+            "teleporting": false
+          }
+        }
+      ],
+      "rollbacks": [
+        10,
+        31
+      ],
+      "mismatches": [
+        0,
+        0
+      ],
+      "successful_restores": [
+        10,
+        31
+      ],
+      "restore_checks": [
+        20,
+        62
+      ],
+      "observed_rewinds": [
+        19,
+        62
+      ],
+      "animated_hitboxes": [
+        true,
+        true
+      ],
+      "query_checks": [
+        24,
+        56
+      ],
+      "query_mismatches": [
+        1,
+        1
+      ],
+      "observed_spawns": [
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Bomb6",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb7",
+          "Bomb8",
+          "Explosion5",
+          "Explosion6",
+          "Bomb10",
+          "Bomb9",
+          "Explosion7",
+          "Explosion8",
+          "Bomb11",
+          "Bomb12",
+          "Explosion10",
+          "Explosion9",
+          "Bomb13",
+          "Explosion11",
+          "Explosion12",
+          "Bomb14",
+          "Bomb15",
+          "Explosion13",
+          "Explosion14",
+          "Bomb16",
+          "Explosion15",
+          "Explosion16"
+        ],
+        [
+          "Bomb1",
+          "Bomb2",
+          "Bomb3",
+          "Bomb4",
+          "Bomb5",
+          "Explosion1",
+          "Explosion2",
+          "Explosion3",
+          "Explosion4",
+          "Bomb6",
+          "Bomb7",
+          "Explosion5",
+          "Explosion6",
+          "Bomb8",
+          "Bomb9",
+          "Explosion7",
+          "Explosion8",
+          "Bomb10",
+          "Bomb11",
+          "Explosion10",
+          "Explosion9",
+          "Bomb12",
+          "Bomb13",
+          "Bomb14",
+          "Explosion11",
+          "Explosion12",
+          "Bomb15",
+          "Bomb16",
+          "Explosion13",
+          "Explosion14",
+          "Explosion15",
+          "Explosion16"
+        ]
+      ],
+      "datagrams_delivered": 1122,
+      "injected_one_way_ms": [
+        80,
+        120
+      ],
+      "measured_one_way_ms_min": 92.99999999348074,
+      "measured_one_way_ms_max": 125.0
+    },
+    "verified": {
+      "confirmed_ticks": 240,
+      "both_peers_equal_reference": true,
+      "fixed_native_hash_mismatches": 0,
+      "fixed_oracle_mismatches": 0,
+      "fixed_successful_restores": [
+        30,
+        31
+      ],
+      "fixed_restore_checks": [
+        60,
+        62
+      ],
+      "fixed_observed_rewinds": [
+        59,
+        61
+      ]
+    }
+  }
+}

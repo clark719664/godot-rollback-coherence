@@ -16,5 +16,11 @@
     "url": "https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.36.0/godot-rapier-2d-single.zip",
     "name": "rapier-latest",
     "sha256": "6C2C8EA8AC036AD9698CA511AB0117C873524D08D9F34E25C1873B71ACCF542A"
+  },
+  {
+    "archive": "fixture.zip",
+    "url": "https://github.com/user-attachments/files/29163702/rollback-rapier-test-v3.zip",
+    "name": "fixture",
+    "sha256": "9350DCDB8B1C100BC6EB19180621036EE19C109C5DF5F83DCB21E913DDCCA96E"
   }
 ]
