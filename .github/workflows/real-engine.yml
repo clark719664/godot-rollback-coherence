@@ -30,6 +30,7 @@ jobs:
         if: always()
         with:
           name: real-engine-logs
+          include-hidden-files: true
           path: |
             .runs/**/*.log
             .runs/**/summary.json
