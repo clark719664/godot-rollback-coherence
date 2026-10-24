@@ -1,0 +1,20 @@
+[
+  {
+    "archive": "engine472.zip",
+    "url": "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_win64.exe.zip",
+    "name": "engine472",
+    "sha256": "731980F9608D61333E5BAF54A2EF17210ACC7A538446C0CB9969F002ACA1E953"
+  },
+  {
+    "archive": "rapier.zip",
+    "url": "https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.8.36/godot-rapier-2d-single-enhanced-determinism.zip",
+    "name": "rapier",
+    "sha256": "70A443BC004E60CCB973AC9BCBC9D1E07F42AF9B727F5883CEA84143301B8B05"
+  },
+  {
+    "archive": "rapier-latest.zip",
+    "url": "https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.36.0/godot-rapier-2d-single.zip",
+    "name": "rapier-latest",
+    "sha256": "6C2C8EA8AC036AD9698CA511AB0117C873524D08D9F34E25C1873B71ACCF542A"
+  }
+]

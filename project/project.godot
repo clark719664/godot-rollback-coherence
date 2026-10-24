@@ -1,0 +1,7 @@
+config_version=5
+[application]
+config/name="Rollback coherence reproduction"
+[physics]
+2d/physics_engine="Rapier2D"
+[rendering]
+renderer/rendering_method="gl_compatibility"

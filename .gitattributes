@@ -1,0 +1,2 @@
+# Preserve exact fixture, provenance, and patch bytes across platforms.
+* -text

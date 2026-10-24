@@ -1,0 +1,24 @@
+name: Reduced real-engine rollback matrix
+on: [workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  matrix:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and verify pinned dependencies
+        shell: pwsh
+        run: ./prepare.ps1
+      - name: Original Rapier package
+        shell: pwsh
+        run: ./run.ps1 -Version original
+      - name: Current Rapier package
+        shell: pwsh
+        run: ./run.ps1 -Version latest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-engine-logs
+          path: work/dependencies/review-*/

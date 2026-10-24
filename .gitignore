@@ -1,0 +1,15 @@
+# Local dependencies, compiled files, and temporary output
+/work/
+/build/
+/target/
+/.godot/
+**/.godot/
+__pycache__/
+*.py[cod]
+*.exe
+*.dll
+*.pdb
+*.tmp
+.env
+.env.*
+!.env.example
